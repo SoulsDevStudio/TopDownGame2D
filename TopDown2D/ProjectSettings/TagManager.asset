@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grass
+    uniqueID: 228006177
+    locked: 0
+  - name: Ground
+    uniqueID: 4170405377
+    locked: 0
+  - name: LevelDesign
+    uniqueID: 2193857225
+    locked: 0
+  - name: Details
+    uniqueID: 3761300137
+    locked: 0
