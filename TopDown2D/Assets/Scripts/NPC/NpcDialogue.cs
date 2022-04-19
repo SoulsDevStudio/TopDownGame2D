@@ -7,13 +7,34 @@ public class NpcDialogue : MonoBehaviour
     public float dialogueRange;
     public LayerMask playerLayer;
 
+    public DialoguesSettings dialogue;
+
+    bool playerHit;
+
+    private List<string> sentences = new List<string>();
+
 
     void Start()
     {
-        
+        GetNPCInfo();
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E) && playerHit)
+        {
+            DialogueControl.instance.Speech(sentences.ToArray());
+        }
+    }
+
+    void GetNPCInfo()
+    {
+        for(int i = 0; i < dialogue.dialogues.Count; i++)
+        {
+            sentences.Add(dialogue.dialogues[i].sentence.portuguese);
+        }
+    }
+
     void FixedUpdate()
     {
         ShowDialogue();
@@ -25,7 +46,12 @@ public class NpcDialogue : MonoBehaviour
 
         if(hit != null)
         {
-            Debug.Log("player na area de colisão");
+            playerHit = true;
+        }
+        else
+        {
+            playerHit = false;
+            DialogueControl.instance.dialogueObj.SetActive(false);
         }
     }
 

@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd02eb12415a785428b199bdd5a3cf7c, type: 3}
   m_Name: NPC_1
   m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  speakrSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: 
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Ol\xE1 Aventureiro, como voc\xEAs esta ?"
+      english: 
+      spanish: 

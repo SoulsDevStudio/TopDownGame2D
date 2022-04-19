@@ -18,6 +18,13 @@ public class DialogueControl : MonoBehaviour
     private int index;
     private string[] sentences;
 
+    public static DialogueControl instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         
@@ -44,6 +51,7 @@ public class DialogueControl : MonoBehaviour
 
     }
 
+    //chamar a fala do NPC
     public void Speech(string[] txt)
     {
         if (!isShowing)
