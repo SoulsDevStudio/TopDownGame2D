@@ -20,5 +20,11 @@ MonoBehaviour:
     profile: {fileID: 0}
     sentence:
       portuguese: "Ol\xE1 Aventureiro, como voc\xEAs esta ?"
-      english: 
-      spanish: 
+      english: Hello Noob
+      spanish: Hola
+  - actorName: 
+    profile: {fileID: 0}
+    sentence:
+      portuguese: Vai tomar banho
+      english: Your Trash
+      spanish: Hola que tal ?
