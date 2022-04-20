@@ -31,6 +31,8 @@ public class DialogueControl : MonoBehaviour
 
     public static DialogueControl instance;
 
+    public bool IsShowing { get => isShowing; set => isShowing = value; }
+
     private void Awake()
     {
         instance = this;
@@ -73,7 +75,7 @@ public class DialogueControl : MonoBehaviour
                 index = 0;
                 dialogueObj.SetActive(false);
                 sentences = null;
-                isShowing = false;
+                IsShowing = false;
             }
         }
     }
@@ -81,12 +83,12 @@ public class DialogueControl : MonoBehaviour
     //chamar a fala do NPC
     public void Speech(string[] txt)
     {
-        if (!isShowing)
+        if (!IsShowing)
         {
             dialogueObj.SetActive(true);
             sentences = txt;
             StartCoroutine(TypeSentence());
-            isShowing = true;
+            IsShowing = true;
         }
     }
 }
