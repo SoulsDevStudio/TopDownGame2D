@@ -9,12 +9,15 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private GameObject woodPrefab;
     [SerializeField] private int totalDrop;
+
+    [SerializeField] private ParticleSystem leafs;
     
     public void OnHit() 
     {
         treeHealth--;
 
         anim.SetTrigger("isHit");
+        leafs.Play();
 
         if(treeHealth <= 0)
         {
