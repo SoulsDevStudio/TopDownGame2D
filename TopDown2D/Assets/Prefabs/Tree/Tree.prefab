@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4976,7 +4976,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03137505, y: 0}
+  m_Offset: {x: 0.03137505, y: -0.20506501}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4987,7 +4987,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7634804, y: 1}
+  m_Size: {x: 0.7634804, y: 0.58987}
   m_EdgeRadius: 0
 --- !u!114 &1603413526250137363
 MonoBehaviour:
@@ -5005,6 +5005,7 @@ MonoBehaviour:
   anim: {fileID: 1603413525641549103}
   woodPrefab: {fileID: 2645200853013125266, guid: 377c324da0eb84c46bdd0607f0a0e8e2, type: 3}
   totalDrop: 0
+  leafs: {fileID: 1635420761}
 --- !u!1 &1603413526069185451
 GameObject:
   m_ObjectHideFlags: 0
