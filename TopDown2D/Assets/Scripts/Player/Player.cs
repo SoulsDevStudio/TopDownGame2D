@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     private float initialSpeed;
 
-    private int handlingObj;
+    private int _handlingObj;
 
     private bool _isRunning;
     private bool _isRolling;
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     public bool IsCutting { get => _isCutting; set => _isCutting = value; }
     public bool IsDigging { get => _isDigging; set => _isDigging = value; }
     public bool IsWatering { get => _isWatering; set => _isWatering = value; }
+    public int HandlingObj { get => _handlingObj; set => _handlingObj = value; }
 
     private void Start()
     {
@@ -53,34 +54,34 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            handlingObj = 1;
+            HandlingObj = 0;
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            handlingObj = 2;
+            HandlingObj = 1;
         } 
         
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            handlingObj = 3;
+            HandlingObj = 2;
         }
 
         OnInput();
         OnRun();
         OnRoll();
 
-        switch (handlingObj)
+        switch (HandlingObj)
         {
-            case 1:
+            case 0:
                 OnCutting();
                 break;
 
-            case 2:
+            case 1:
                 OnDig();
                 break;
             
-            case 3:
+            case 2:
                 OnWatering();
                 break;
         }
