@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isPaused;
+
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
 
@@ -52,45 +54,54 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!isPaused)
         {
-            HandlingObj = 0;
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                HandlingObj = 0;
+            }
         
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            HandlingObj = 1;
-        } 
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                HandlingObj = 1;
+            } 
         
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            HandlingObj = 2;
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                HandlingObj = 2;
+            }
 
-        OnInput();
-        OnRun();
-        OnRoll();
+            OnInput();
+            OnRun();
+            OnRoll();
 
-        switch (HandlingObj)
-        {
-            case 0:
-                OnCutting();
-                break;
+            switch (HandlingObj)
+            {
+                case 0:
+                    OnCutting();
+                    break;
 
-            case 1:
-                OnDig();
-                break;
+                case 1:
+                    OnDig();
+                    break;
             
-            case 2:
-                OnWatering();
-                break;
+                case 2:
+                    OnWatering();
+                    break;
+            }
         }
+
+        
         
     }
 
     private void FixedUpdate()
     {
-        OnMovi();
+        if (!isPaused)
+        {
+            OnMovi();
+        }
+        
     }
 
     #region Movement
