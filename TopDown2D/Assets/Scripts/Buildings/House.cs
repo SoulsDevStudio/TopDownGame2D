@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
+    [SerializeField] private GameObject houseColl;
     [SerializeField] private SpriteRenderer houseSprite;
     [SerializeField] private bool detectingPlayer;
     [SerializeField] private Color startAlpha;
@@ -40,6 +41,7 @@ public class House : MonoBehaviour
             {
                 houseSprite.color = endAlpha;
                 anim.OnHammeringEnded();
+                houseColl.SetActive(true);
             }
         }
     }
