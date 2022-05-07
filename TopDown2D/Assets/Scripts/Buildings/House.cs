@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
-    [SerializeField] private GameObject houseColl;
-    [SerializeField] private SpriteRenderer houseSprite;
-    [SerializeField] private bool detectingPlayer;
+    [Header("Amounts")]
+    [SerializeField] private int woodAmount;
     [SerializeField] private Color startAlpha;
     [SerializeField] private Color endAlpha;
     [SerializeField] private float timeAmount;
+
+    [Header("Components")]
+    [SerializeField] private GameObject houseColl;
+    [SerializeField] private SpriteRenderer houseSprite;
+    [SerializeField] private bool detectingPlayer;
     [SerializeField] private Transform point;
 
     private PlayerAnim anim;
@@ -25,12 +29,13 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if (detectingPlayer && Input.GetKeyDown(KeyCode.E))
+        if (detectingPlayer && Input.GetKeyDown(KeyCode.E) && player.totalWood >= woodAmount)
         {
             isBegining = true;
             anim.OnHammeringStarted();
             houseSprite.color = startAlpha;
             player.transform.position = point.position;
+            player.totalWood -= woodAmount;
         }
 
         if (isBegining)
