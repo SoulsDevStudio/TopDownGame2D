@@ -9,10 +9,12 @@ public class SkeletonAnim : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     private Animator anim;
+    private PlayerAnim playerAnim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        playerAnim = FindObjectOfType<PlayerAnim>();
     }
 
     public void PlayAnim(int value)
@@ -26,7 +28,7 @@ public class SkeletonAnim : MonoBehaviour
 
         if(hit != null)
         {
-            Debug.Log("Atacou");
+            playerAnim.OnHit();
         }
         else
         {

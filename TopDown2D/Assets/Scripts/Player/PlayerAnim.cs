@@ -9,6 +9,11 @@ public class PlayerAnim : MonoBehaviour
     private Animator anim;
 
     private Casting cast;
+
+    private bool isHitting;
+
+    [SerializeField] private float timeCount;
+    private float recoveryTime = 2f;
     
     void Start()
     {
@@ -23,6 +28,18 @@ public class PlayerAnim : MonoBehaviour
     {
         OnMove();
         OnRun();
+
+        if (isHitting)
+        {
+            timeCount += Time.deltaTime;
+
+            if(timeCount >= recoveryTime)
+            {
+                isHitting = false;
+                timeCount = 0f;
+            }
+        }
+        
 
     }
 
@@ -105,5 +122,15 @@ public class PlayerAnim : MonoBehaviour
     {
         anim.SetBool("hammering", false);
         player.isPaused = false;
+    }
+
+    public void OnHit()
+    {
+        if (!isHitting)
+        {
+            anim.SetTrigger("isHit");
+            isHitting = true;
+        }
+        
     }
 }
