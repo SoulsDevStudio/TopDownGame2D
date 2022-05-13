@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SkeletonAnim : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
@@ -10,11 +11,13 @@ public class SkeletonAnim : MonoBehaviour
 
     private Animator anim;
     private PlayerAnim playerAnim;
+    private Skeleton skeleton;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         playerAnim = FindObjectOfType<PlayerAnim>();
+        skeleton = GetComponentInParent<Skeleton>();
     }
 
     public void PlayAnim(int value)
@@ -24,15 +27,33 @@ public class SkeletonAnim : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position,radius,playerLayer);
-
-        if(hit != null)
+        if (!skeleton.isDead)
         {
-            playerAnim.OnHit();
+            Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
+
+            if (hit != null)
+            {
+                playerAnim.OnHit();
+            }
+        }
+        
+    }
+
+    public void OnHit()
+    {
+        
+        if(skeleton.currentHealth <= 0)
+        {
+            skeleton.isDead = true;
+            anim.SetTrigger("death");
+
+            Destroy(skeleton.gameObject, 1f);
         }
         else
         {
-            
+            anim.SetTrigger("hit");
+            skeleton.currentHealth--;
+            skeleton.healthBar.fillAmount = skeleton.currentHealth / skeleton.totalHealth;
         }
     }
 

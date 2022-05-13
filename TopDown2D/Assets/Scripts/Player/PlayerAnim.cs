@@ -112,7 +112,7 @@ public class PlayerAnim : MonoBehaviour
 
         if(hit != null)
         {
-
+            hit.GetComponentInChildren<SkeletonAnim>().OnHit();
         }
     }
 
