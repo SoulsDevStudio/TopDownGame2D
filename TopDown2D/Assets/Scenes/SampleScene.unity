@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 140554841}
   - component: {fileID: 140554843}
   - component: {fileID: 140554842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1686,6 +1686,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2ec5724e52d8b47954093ac6e8a9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: {fileID: 793530932}
+  radius: 0.36
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  timeCount: 0
 --- !u!114 &651368470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2889,7 +2895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793530931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.33, y: 0, z: 0}
+  m_LocalPosition: {x: 1.241, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651368466}
@@ -2908,9 +2914,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.124877095, y: 0}
+  m_Offset: {x: 0.02409932, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3751229
+  m_Radius: 0.3538405
 --- !u!1 &870410744
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,7 +4519,7 @@ GameObject:
   - component: {fileID: 1309640458}
   - component: {fileID: 1309640459}
   - component: {fileID: 1309640460}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5044,7 +5050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1423737135}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
