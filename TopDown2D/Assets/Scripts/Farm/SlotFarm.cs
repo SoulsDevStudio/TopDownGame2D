@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SlotFarm : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip holeSfx;
+    [SerializeField] private AudioClip carrotSfx;
+
     [Header("Components")]
     [SerializeField] private Sprite hole;
     [SerializeField] private Sprite carrot;
@@ -19,6 +24,7 @@ public class SlotFarm : MonoBehaviour
     private float currentWater;
 
     private bool dugHole;
+    private bool plantedCarrot;
 
     PlayerInventary playerInventary;
 
@@ -38,16 +44,20 @@ public class SlotFarm : MonoBehaviour
                 currentWater += 0.01f;
             }
 
-            if (currentWater >= waterAmount)
+            if (currentWater >= waterAmount && !plantedCarrot)
             {
+                audioSource.PlayOneShot(holeSfx);
                 spriteRender.sprite = carrot;
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    playerInventary.TotalCarrot++;
-                    spriteRender.sprite = hole;
-                    currentWater = 0f;
-                }
+                plantedCarrot = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot)
+            {
+                audioSource.PlayOneShot(carrotSfx);
+                playerInventary.TotalCarrot++;
+                spriteRender.sprite = hole;
+                currentWater = 0f;
             }
         }
         
