@@ -36074,13 +36074,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6186428964297213479, guid: 87dc9b852df02cd4584b4dfd9fc8561e, type: 3}
+      propertyPath: radius
+      value: 2.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186428964297213479, guid: 87dc9b852df02cd4584b4dfd9fc8561e, type: 3}
+      propertyPath: layer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6186428964297213483, guid: 87dc9b852df02cd4584b4dfd9fc8561e, type: 3}
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 6186428964297213483, guid: 87dc9b852df02cd4584b4dfd9fc8561e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87dc9b852df02cd4584b4dfd9fc8561e, type: 3}

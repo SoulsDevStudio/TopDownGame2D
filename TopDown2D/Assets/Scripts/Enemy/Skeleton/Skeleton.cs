@@ -10,12 +10,15 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private SkeletonAnim anim;
 
+    public float radius;
+    public LayerMask layer;
     public float currentHealth;
     public Image healthBar;
     public float totalHealth;
     public bool isDead;
     
     private Player player;
+    private bool detect;
     void Start()
     {
         currentHealth = totalHealth;
@@ -27,8 +30,9 @@ public class Skeleton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        if (!isDead && detect)
         {
+            agent.isStopped = false;
             agent.SetDestination(player.transform.position);
 
             if (Vector2.Distance(transform.position, player.transform.position) <= agent.stoppingDistance)
@@ -52,5 +56,31 @@ public class Skeleton : MonoBehaviour
             }
         }
         
+    }
+
+    private void FixedUpdate()
+    {
+        DetectPlayer();
+    }
+
+    public void DetectPlayer()
+    {
+        Collider2D playerDetect = Physics2D.OverlapCircle(transform.position, radius, layer);
+
+        if(playerDetect != null)
+        {
+            detect = true;
+        }
+        else
+        {
+            detect = false;
+            anim.PlayAnim(0);
+            agent.isStopped = true;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

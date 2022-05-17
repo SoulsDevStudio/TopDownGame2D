@@ -58,6 +58,7 @@ public class SlotFarm : MonoBehaviour
                 playerInventary.TotalCarrot++;
                 spriteRender.sprite = hole;
                 currentWater = 0f;
+                plantedCarrot = false;
             }
         }
         
