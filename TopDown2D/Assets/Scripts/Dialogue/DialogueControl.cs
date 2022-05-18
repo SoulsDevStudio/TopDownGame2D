@@ -28,6 +28,8 @@ public class DialogueControl : MonoBehaviour
     private bool isShowing;
     private int index;
     private string[] sentences;
+    private string[] actorNames;
+    private Sprite[] actorProfiles;
 
     public static DialogueControl instance;
 
@@ -66,12 +68,15 @@ public class DialogueControl : MonoBehaviour
             if(index < sentences.Length - 1)
             {
                 index++;
+                profileSprite.sprite = actorProfiles[index];
+                actorNameText.text = actorNames[index];
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
             else // quando terminan os textos
             {
                 speechText.text = "";
+                actorNameText.text = "";
                 index = 0;
                 dialogueObj.SetActive(false);
                 sentences = null;
@@ -81,12 +86,16 @@ public class DialogueControl : MonoBehaviour
     }
 
     //chamar a fala do NPC
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, string[] actorName, Sprite[] actorProfile)
     {
         if (!IsShowing)
         {
             dialogueObj.SetActive(true);
             sentences = txt;
+            actorNames = actorName;
+            actorProfiles = actorProfile;
+            profileSprite.sprite = actorProfiles[index];
+            actorNameText.text = actorNames[index];
             StartCoroutine(TypeSentence());
             IsShowing = true;
         }
