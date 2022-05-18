@@ -78,14 +78,20 @@ public class Player : MonoBehaviour
             switch (HandlingObj)
             {
                 case 0:
+                    IsWatering = false;
+                    IsDigging = false;
                     OnCutting();
                     break;
 
                 case 1:
+                    IsWatering = false;
+                    IsCutting = false;
                     OnDig();
                     break;
             
                 case 2:
+                    IsDigging = false;
+                    IsCutting = false;
                     OnWatering();
                     break;
             }

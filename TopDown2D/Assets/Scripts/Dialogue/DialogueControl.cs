@@ -30,6 +30,7 @@ public class DialogueControl : MonoBehaviour
     private string[] sentences;
     private string[] actorNames;
     private Sprite[] actorProfiles;
+    private Player player;
 
     public static DialogueControl instance;
 
@@ -38,6 +39,7 @@ public class DialogueControl : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        player = FindObjectOfType<Player>();
     }
 
     void Start()
@@ -81,6 +83,7 @@ public class DialogueControl : MonoBehaviour
                 dialogueObj.SetActive(false);
                 sentences = null;
                 IsShowing = false;
+                player.isPaused = false;
             }
         }
     }
@@ -98,6 +101,7 @@ public class DialogueControl : MonoBehaviour
             actorNameText.text = actorNames[index];
             StartCoroutine(TypeSentence());
             IsShowing = true;
+            player.isPaused = true;
         }
     }
 }
