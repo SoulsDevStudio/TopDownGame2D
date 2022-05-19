@@ -25,6 +25,7 @@ public class SlotFarm : MonoBehaviour
 
     private bool dugHole;
     private bool plantedCarrot;
+    private bool player;
 
     PlayerInventary playerInventary;
 
@@ -52,7 +53,7 @@ public class SlotFarm : MonoBehaviour
                 plantedCarrot = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot)
+            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot && player)
             {
                 audioSource.PlayOneShot(carrotSfx);
                 playerInventary.TotalCarrot++;
@@ -88,6 +89,11 @@ public class SlotFarm : MonoBehaviour
         {
             detecting = true;
         }
+
+        if (collision.CompareTag("Player"))
+        {
+            player = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -95,6 +101,11 @@ public class SlotFarm : MonoBehaviour
         if (collision.CompareTag("Water"))
         {
             detecting = false;
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            player = false;
         }
     }
 
