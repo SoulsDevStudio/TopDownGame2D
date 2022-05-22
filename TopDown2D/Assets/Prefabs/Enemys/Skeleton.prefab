@@ -349,6 +349,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6186428964297213472}
   anim: {fileID: 6186428965342720886}
+  radius: 2.98
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
   currentHealth: 0
   healthBar: {fileID: 6186428963901790669}
   totalHealth: 10
